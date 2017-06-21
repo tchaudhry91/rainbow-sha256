@@ -10,8 +10,6 @@ services:
         delay: 10s
       restart_policy:
         condition: on-failure
-    ports:
-      - 9999:9999
     environment:
       - REDIS_HOST=redis
     networks:
@@ -23,8 +21,6 @@ services:
       placement:
         constraints:
           - node.role == manager
-    expose:
-      - 6379
     networks:
       - app
 
