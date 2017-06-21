@@ -2,8 +2,7 @@ version: '3'
 
 services:
   rainbow-hasher:
-    build: ./src
-    image: rainbow-hasher:SHA256
+    image: tchaudhry/rainbow-hasher:SHA256
     deploy:
       replicas: 1
       update_config:
