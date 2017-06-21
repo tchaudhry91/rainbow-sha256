@@ -20,6 +20,10 @@ services:
   
   redis:
     image: "redis:alpine"
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
     networks:
       - app
 
