@@ -15,5 +15,5 @@ WORKDIR /rainbow-hasher-sha256
 
 ENTRYPOINT ["gunicorn", "-b", "0.0.0.0:9999", "--workers", "4", "main:app"]
 
-HEALTHCHECK --interval=15s --timeout=3s \
+HEALTHCHECK --interval=3s --timeout=3s \
   CMD curl http://localhost:9999/reverse_hash?str="test" || exit 1
