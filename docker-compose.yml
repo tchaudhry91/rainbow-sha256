@@ -10,6 +10,8 @@ services:
         delay: 10s
       restart_policy:
         condition: on-failure
+    ports:
+      - 9999:9999
     environment:
       - REDIS_HOST=redis
     networks:
