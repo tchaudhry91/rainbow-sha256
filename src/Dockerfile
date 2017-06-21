@@ -6,9 +6,6 @@ ADD . /rainbow-hasher-sha256
 
 RUN pip install -r rainbow-hasher-sha256/requirements.txt
 
-RUN apk add --update curl && \
-    rm -rf /var/cache/apk/*
-
 EXPOSE 9999
 
 WORKDIR /rainbow-hasher-sha256
