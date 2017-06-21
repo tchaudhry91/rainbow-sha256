@@ -59,7 +59,7 @@ def init():
         REDIS_HOST = 'localhost'
     REDIS_CONNECTION = redis.StrictRedis(host=REDIS_HOST, port=6379, db=0)
 
+init()
 
 if __name__ == "__main__":
-    init()
     app.run(host='0.0.0.0')
