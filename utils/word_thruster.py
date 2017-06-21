@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 
 import requests
+import sys
 
 WORDS_FILE = "words/words.txt"
 DELIMITER = "\n"
-URL = 'http://localhost:5000/hash?str='
+IP = "127.0.0.1"
+URL = 'http://localhost:9999/hash?str='
 
 
 # Read the file and thrust word requests to the server to save
@@ -17,4 +19,5 @@ def main():
 
 
 if __name__ == "__main__":
+    IP = sys.argv[1]
     main()
