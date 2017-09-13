@@ -19,10 +19,10 @@ def main():
             counter += 1
             formatted_url = URL + '{}'.format(word)
             requests.get(formatted_url)
-            if counter == 1000:
+            if counter == 100:
                 counter = 0
                 speed = (time.time() - time_start)
-                print("Seconds per 1000 requests = {}".format(speed))
+                print("Seconds per 100 requests = {}".format(speed))
                 time_start = time.time()
 
 
