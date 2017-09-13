@@ -8,6 +8,7 @@ WORDS_FILE = "words/words.txt"
 DELIMITER = "\n"
 IP = ""
 URL = "" 
+COUNTER = 10
 
 
 # Read the file and thrust word requests to the server to save
@@ -19,10 +20,10 @@ def main():
             counter += 1
             formatted_url = URL + '{}'.format(word)
             requests.get(formatted_url)
-            if counter == 100:
+            if counter == COUNTER:
                 counter = 0
                 speed = (time.time() - time_start)
-                print("Seconds per 100 requests = {}".format(speed))
+                print("Seconds per {} requests = {}".format(counter, speed))
                 time_start = time.time()
 
 
@@ -30,4 +31,5 @@ if __name__ == "__main__":
     IP = sys.argv[1]
     PORT = sys.argv[2]
     URL = 'http://{}:{}/hash?str='.format(IP, PORT)
+    COUNTER = int(sys.argv[3])
     main()
