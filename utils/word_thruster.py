@@ -6,8 +6,8 @@ import time
 
 WORDS_FILE = "words/words.txt"
 DELIMITER = "\n"
-IP = "127.0.0.1"
-URL = 'http://{}:9999/hash?str='.format(IP)
+IP = ""
+URL = "" 
 
 
 # Read the file and thrust word requests to the server to save
@@ -28,5 +28,6 @@ def main():
 
 if __name__ == "__main__":
     IP = sys.argv[1]
-    URL = 'http://{}:9999/hash?str='.format(IP)
+    PORT = sys.argv[2]
+    URL = 'http://{}:{}/hash?str='.format(IP, PORT)
     main()
