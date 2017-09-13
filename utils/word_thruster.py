@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import grequests
 import requests
 import sys
 import time
@@ -16,14 +17,23 @@ def main():
     with open(WORDS_FILE, 'r') as words_file:
         counter = 0
         time_start = time.time()
+        buff_urls = []
         for word in words_file.read().split('\n'):
             counter += 1
             formatted_url = URL + '{}'.format(word)
-            requests.get(formatted_url)
+            buff_urls.append(formatted_url)
             if counter == COUNTER:
                 counter = 0
+                rs = (grequests.get(u) for u in buff_urls)
+                map_urls = grequests.map(rs)
+                failures = 0
+                for code in map_urls:
+                    if not isinstance(code, requests.models.Response):
+                        failures += 1
+                print(failures)
+                buff_urls = []
                 speed = (time.time() - time_start)
-                print("Seconds per {} requests = {}".format(counter, speed))
+                print("Seconds per {} requests = {}".format(COUNTER, speed))
                 time_start = time.time()
 
 
