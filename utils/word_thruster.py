@@ -27,10 +27,14 @@ def main():
                 rs = (grequests.get(u) for u in buff_urls)
                 map_urls = grequests.map(rs)
                 failures = 0
+                serv_failures = 0
                 for code in map_urls:
                     if not isinstance(code, requests.models.Response):
                         failures += 1
-                print(failures)
+                    elif code.status_code != 200:
+                        serv_failures += 1
+                print("Request Failures: {}".format(failures))
+                print("Response Code Failures: {}".format(serv_failures))
                 buff_urls = []
                 speed = (time.time() - time_start)
                 print("Seconds per {} requests = {}".format(COUNTER, speed))
