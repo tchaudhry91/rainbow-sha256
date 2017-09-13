@@ -28,4 +28,5 @@ def main():
 
 if __name__ == "__main__":
     IP = sys.argv[1]
+    URL = 'http://{}:9999/hash?str='.format(IP)
     main()
